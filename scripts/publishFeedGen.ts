@@ -8,29 +8,28 @@ const run = async () => {
 
   // YOUR bluesky handle
   // Ex: user.bsky.social
-  const handle = ''
+  const handle = 'iplayitofflegit.bsky.social'
 
   // YOUR bluesky password, or preferably an App Password (found in your client settings)
   // Ex: abcd-1234-efgh-5678
-  const password = ''
+  const password = process.env.BLUESKY_API_PASSWORD
 
   // A short name for the record that will show in urls
   // Lowercase with no spaces.
   // Ex: whats-hot
-  const recordName = ''
+  const recordName = 'web-components'
 
   // A display name for your feed
   // Ex: What's Hot
-  const displayName = ''
+  const displayName = 'Web Components'
 
   // (Optional) A description of your feed
   // Ex: Top trending content from the whole network
-  const description = ''
+  const description = 'Web Components and custom elements related posts'
 
   // (Optional) The path to an image to be used as your feed's avatar
   // Ex: ~/path/to/avatar.jpeg
   const avatar: string = ''
-
   // -------------------------------------
   // NO NEED TO TOUCH ANYTHING BELOW HERE
   // -------------------------------------
@@ -42,7 +41,9 @@ const run = async () => {
     process.env.FEEDGEN_SERVICE_DID ?? `did:web:${process.env.FEEDGEN_HOSTNAME}`
 
   // only update this if in a test environment
-  const agent = new AtpAgent({ service: 'https://bsky.social' })
+  const agent = new AtpAgent({
+    service: 'https://bsky.social',
+  })
   await agent.login({ identifier: handle, password })
 
   try {
