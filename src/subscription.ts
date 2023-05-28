@@ -49,5 +49,79 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
         .onConflict((oc) => oc.doNothing())
         .execute()
     }
+
+    const indiePostsToDelete = ops.posts.deletes.map((del) => del.uri)
+    const indiePostsToCreate = ops.posts.creates
+      .filter((create) => {
+        // only indie music related posts
+        const keywords = [
+          'indie music',
+          'indie rock',
+          'experimental music',
+          'avant-garde music',
+          'avant garde music',
+          'indie pop',
+          'indie country',
+          'indie folk',
+        ]
+
+        const musicKeywords = [
+          'music',
+          'rock',
+          'experimental',
+          'avant-garde',
+          'avant garde',
+          'pop',
+          'country',
+          'folk',
+          'punk',
+          'album',
+          'track',
+          'release',
+          'song',
+          'alternative',
+        ]
+        if (
+          keywords.some((keyword) =>
+            create.record.text.toLowerCase().includes(keyword),
+          )
+        ) {
+          return true
+        } else if (
+          (create.record.text.toLowerCase().includes('indie') ||
+            create.record.text.toLowerCase().includes('independent')) &&
+          musicKeywords.some((keyword) =>
+            create.record.text.toLowerCase().includes(keyword),
+          )
+        ) {
+          return true
+        } else {
+          return false
+        }
+      })
+      .map((create) => {
+        // map web component posts to a db row
+        return {
+          uri: create.uri,
+          cid: create.cid,
+          replyParent: create.record?.reply?.parent.uri ?? null,
+          replyRoot: create.record?.reply?.root.uri ?? null,
+          indexedAt: new Date().toISOString(),
+        }
+      })
+
+    if (indiePostsToDelete.length > 0) {
+      await this.db
+        .deleteFrom('indie_post')
+        .where('uri', 'in', indiePostsToDelete)
+        .execute()
+    }
+    if (indiePostsToCreate.length > 0) {
+      await this.db
+        .insertInto('indie_post')
+        .values(indiePostsToCreate)
+        .onConflict((oc) => oc.doNothing())
+        .execute()
+    }
   }
 }
