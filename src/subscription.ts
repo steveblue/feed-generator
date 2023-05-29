@@ -57,12 +57,16 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
         const keywords = [
           'indie music',
           'indie rock',
-          'experimental music',
-          'avant-garde music',
-          'avant garde music',
           'indie pop',
           'indie country',
           'indie folk',
+          'indie punk',
+          'indie rap',
+          'indie hip hop',
+          'indie hardcore',
+          'experimental music',
+          'avant-garde music',
+          'avant garde music',
         ]
 
         const musicKeywords = [
@@ -75,12 +79,19 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
           'country',
           'folk',
           'punk',
+          'hip hop',
+          'rap',
+          'hardcore',
           'album',
           'track',
           'release',
           'song',
           'alternative',
+          'record',
+          'EP',
+          'band',
         ]
+
         if (
           keywords.some((keyword) =>
             create.record.text.toLowerCase().includes(keyword),
@@ -88,10 +99,10 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
         ) {
           return true
         } else if (
-          (create.record.text.toLowerCase().includes('indie') ||
-            create.record.text.toLowerCase().includes('independent')) &&
+          (create.record.text.toLowerCase().includes(' indie ') ||
+            create.record.text.toLowerCase().includes(' independent ')) &&
           musicKeywords.some((keyword) =>
-            create.record.text.toLowerCase().includes(keyword),
+            create.record.text.toLowerCase().includes(` ${keyword} `),
           )
         ) {
           return true

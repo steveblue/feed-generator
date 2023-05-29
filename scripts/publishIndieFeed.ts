@@ -26,7 +26,7 @@ const run = async () => {
   // (Optional) A description of your feed
   // Ex: Top trending content from the whole network
   const description =
-    'Indie, punk, folk, country, avant-garde, experimental, and more independant music.'
+    'Indie rock, punk, folk, hip hop, country, avant-garde, experimental, and more music.'
 
   // (Optional) The path to an image to be used as your feed's avatar
   // Ex: ~/path/to/avatar.jpeg
