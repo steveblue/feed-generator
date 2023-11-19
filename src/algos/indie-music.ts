@@ -26,7 +26,7 @@ export const handler = async (ctx: AppContext, params: QueryParams) => {
   const res = await builder.execute()
 
   const feed = res.map((row) => ({
-    ['indie_post']: row.uri,
+    post: row.uri,
   }))
 
   let cursor: string | undefined
