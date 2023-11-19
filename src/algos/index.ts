@@ -9,7 +9,7 @@ import * as indieMusic from './indie-music'
 type AlgoHandler = (ctx: AppContext, params: QueryParams) => Promise<AlgoOutput>
 
 const algos: Record<string, AlgoHandler> = {
-  [webComponents.uri]: webComponents.handler,
-  [indieMusic.uri]: indieMusic.handler,
+  [webComponents.shortname]: webComponents.handler,
+  [indieMusic.shortname]: indieMusic.handler,
 }
 export default algos
