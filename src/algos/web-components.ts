@@ -3,11 +3,8 @@ import { InvalidRequestError } from '@atproto/xrpc-server'
 import { QueryParams } from '../lexicon/types/app/bsky/feed/getFeedSkeleton'
 import { AppContext } from '../config'
 
-dotenv.config()
-
-export const uri = `at://${process.env.FEEDGEN_FEED_DID}/app.bsky.feed.generator/web-components`
-
-console.log('web components feed uri:', uri)
+// max 15 chars
+export const shortname = 'web-components'
 
 export const handler = async (ctx: AppContext, params: QueryParams) => {
   let builder = ctx.db

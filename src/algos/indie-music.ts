@@ -3,11 +3,7 @@ import { InvalidRequestError } from '@atproto/xrpc-server'
 import { QueryParams } from '../lexicon/types/app/bsky/feed/getFeedSkeleton'
 import { AppContext } from '../config'
 
-dotenv.config()
-
-export const uri = `at://${process.env.FEEDGEN_FEED_DID}/app.bsky.feed.generator/indie-music`
-
-console.log('indie music feed uri:', uri)
+export const shortname = 'indie-music'
 
 export const handler = async (ctx: AppContext, params: QueryParams) => {
   let builder = ctx.db
