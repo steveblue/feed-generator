@@ -3,6 +3,8 @@ export type DatabaseSchema = {
   sub_state: SubState
   indie_post: Post
   indie_sub_state: SubState
+  ca_post: Post
+  ca_sub_state: SubState
 }
 
 export type Post = {

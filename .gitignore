@@ -131,3 +131,5 @@ dist
 
 # db
 db.sqlite
+
+.DS_Store

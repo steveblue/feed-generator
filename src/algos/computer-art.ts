@@ -3,11 +3,11 @@ import { QueryParams } from '../lexicon/types/app/bsky/feed/getFeedSkeleton'
 import { AppContext } from '../config'
 
 // max 15 chars
-export const shortname = 'indie-music'
+export const shortname = 'computer-art'
 
 export const handler = async (ctx: AppContext, params: QueryParams) => {
   let builder = ctx.db
-    .selectFrom('indie_post')
+    .selectFrom('ca_post')
     .selectAll()
     .orderBy('indexedAt', 'desc')
     .orderBy('cid', 'desc')
@@ -20,9 +20,9 @@ export const handler = async (ctx: AppContext, params: QueryParams) => {
     }
     const timeStr = new Date(parseInt(indexedAt, 10)).toISOString()
     builder = builder
-      .where('indie_post.indexedAt', '<', timeStr)
-      .orWhere((qb) => qb.where('indie_post.indexedAt', '=', timeStr))
-      .where('indie_post.cid', '<', cid)
+      .where('ca_post.indexedAt', '<', timeStr)
+      .orWhere((qb) => qb.where('ca_post.indexedAt', '=', timeStr))
+      .where('ca_post.cid', '<', cid)
   }
   const res = await builder.execute()
 

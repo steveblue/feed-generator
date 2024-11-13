@@ -51,3 +51,25 @@ migrations['002'] = {
     await db.schema.dropTable('indie_sub_state').execute()
   },
 }
+
+migrations['003'] = {
+  async up(db: Kysely<unknown>) {
+    await db.schema
+      .createTable('ca_post')
+      .addColumn('uri', 'varchar', (col) => col.primaryKey())
+      .addColumn('cid', 'varchar', (col) => col.notNull())
+      .addColumn('replyParent', 'varchar')
+      .addColumn('replyRoot', 'varchar')
+      .addColumn('indexedAt', 'varchar', (col) => col.notNull())
+      .execute()
+    await db.schema
+      .createTable('ca_sub_state')
+      .addColumn('service', 'varchar', (col) => col.primaryKey())
+      .addColumn('cursor', 'integer', (col) => col.notNull())
+      .execute()
+  },
+  async down(db: Kysely<unknown>) {
+    await db.schema.dropTable('ca_post').execute()
+    await db.schema.dropTable('ca_sub_state').execute()
+  },
+}
