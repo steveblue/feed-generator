@@ -133,3 +133,8 @@ dist
 db.sqlite
 
 .DS_Store
+
+
+# intellij
+.idea/
+*.iml
