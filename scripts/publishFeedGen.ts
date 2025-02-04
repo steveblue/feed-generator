@@ -12,7 +12,7 @@ const run = async () => {
 
   // YOUR bluesky password, or preferably an App Password (found in your client settings)
   // Ex: abcd-1234-efgh-5678
-  const password = process.env.BLUESKY_API_PASSWORD
+  const password = 'm7fz-kcal-uj7i-td3d'
 
   // A short name for the record that will show in urls
   // Lowercase with no spaces.
@@ -25,7 +25,8 @@ const run = async () => {
 
   // (Optional) A description of your feed
   // Ex: Top trending content from the whole network
-  const description = 'Web Components and custom elements related posts'
+  const description =
+    'Web Components, Shadow DOM, and Custom Element related posts'
 
   // (Optional) The path to an image to be used as your feed's avatar
   // Ex: ~/path/to/avatar.jpeg
