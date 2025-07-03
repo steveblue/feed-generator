@@ -28,7 +28,6 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
           '#customelement',
           'shadow dom ',
           '#shadowdom',
-          'html template',
           '#htmltemplate',
           'css vars ',
           'css variables ',
@@ -45,7 +44,7 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
           'lightning web components',
           'lume element',
           'web awesome ',
-          'fast elements',
+          ' fast elements',
           'shadowroot',
           ' slot element ',
           ' declarative shadow element',
@@ -182,6 +181,8 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
           'republic',
           'policy',
           'creator',
+          'kbradio',
+          'kbcountryradio',
         ]
 
         function doesNotIncludeAllKeywords() {
